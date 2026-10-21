@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PROMPT LAB | AI DRAMA COMPLETE KIT</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#080d19;color:white;font-family:Arial,sans-serif}
+header{padding:22px;text-align:center;border-bottom:1px solid #263958}
+.logo{font-size:27px;font-weight:bold;color:#36aaff;letter-spacing:3px}
+.hero{text-align:center;padding:75px 20px;background:radial-gradient(circle,#173b68,#080d19 75%)}
+.hero h1{font-size:38px}
+.blue{color:#39adff}
+p{color:#b5c4d8;line-height:1.8}
+.btn{background:#168cff;color:white;border:0;padding:14px 25px;border-radius:8px;font-size:16px;font-weight:bold;cursor:pointer}
+section{padding:45px 20px;text-align:center}
+.features,.packages{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;max-width:950px;margin:30px auto}
+.card{background:#111d32;border:1px solid #294466;border-radius:14px;padding:25px}
+.card h3{color:#45b2ff}
+.price{font-size:38px;font-weight:bold;margin:20px}
+ul{text-align:left;color:#bdc9d9;line-height:2}
+.master{border:2px solid #168cff}
+#checkout{display:none;max-width:500px;margin:25px auto;background:#111d32;padding:25px;border-radius:15px}
+input{width:100%;padding:13px;margin:10px 0;background:#080d19;color:white;border:1px solid #345071;border-radius:7px}
+.qr{background:white;color:#111;padding:25px;border-radius:10px;margin:20px 0}
+footer{text-align:center;padding:30px;border-top:1px solid #263958}
+</style>
+</head>
+<body>
+
+<header><div class="logo">PROMPT LAB</div>
+<p>AI CREATOR STORE</p></header>
+
+<div class="hero">
+<p class="blue">AI DRAMA COMPLETE KIT</p>
+<h1>CREATE YOUR <span class="blue">AI DRAMA</span></h1>
+<p>เปลี่ยนไอเดียของคุณให้กลายเป็นละคร AI<br>
+ด้วยชุด Prompt ที่ออกแบบมาให้ใช้งานง่าย</p>
+<a href="#packages"><button class="btn">เลือกแพ็กเกจ</button></a>
+</div>
+
+<section>
+<h2>สร้างละคร AI ได้ครบในชุดเดียว</h2>
+<div class="features">
+<div class="card"><h3>STORY</h3><p>สร้างพล็อตและบทละคร</p></div>
+<div class="card"><h3>CHARACTER</h3><p>ออกแบบตัวละครและล็อกใบหน้า</p></div>
+<div class="card"><h3>VIDEO</h3><p>สร้าง Prompt สำหรับวิดีโอ AI</p></div>
+<div class="card"><h3>VOICE</h3><p>กำหนดเสียงตัวละครให้ต่อเนื่อง</p></div>
+</div>
+</section>
+
+<section id="packages">
+<h2>เลือกแพ็กเกจของคุณ</h2>
+<div class="packages">
+
+<div class="card">
+<h3>STARTER</h3><div class="price">฿99</div>
+<ul><li>Master Prompt</li><li>Story Generator</li><li>Character Prompt</li><li>Video Prompt</li></ul>
+<button class="btn" onclick="buy('STARTER',99)">เลือกแพ็กเกจ</button>
+</div>
+
+<div class="card">
+<h3>CREATOR</h3><div class="price">฿199</div>
+<ul><li>ทุกอย่างใน STARTER</li><li>Character Bible</li><li>Voice Lock</li><li>Storyboard</li><li>Continuity Lock</li></ul>
+<button class="btn" onclick="buy('CREATOR',199)">เลือกแพ็กเกจ</button>
+</div>
+
+<div class="card master">
+<h3>MASTER</h3><div class="price">฿399</div>
+<ul><li>ทุกอย่างใน CREATOR</li><li>Emotional Acting</li><li>Ending Generator</li><li>Poster Prompt</li><li>Social Media Caption</li><li>Complete Workflow</li></ul>
+<button class="btn" onclick="buy('MASTER',399)">เลือกแพ็กเกจ</button>
+</div>
+
+</div>
+
+<div id="checkout">
+<h2>สั่งซื้อสินค้า</h2>
+<p id="selected"></p>
+<input id="customer" placeholder="ชื่อผู้สั่งซื้อ">
+<input id="email" type="email" placeholder="อีเมล">
+<div class="qr">
+<h3>ชำระเงินผ่าน PromptPay</h3>
+<p>QR Code สำหรับชำระเงินจะถูกเพิ่มในขั้นตอนถัดไป</p>
+</div>
+<p>แนบสลิปการโอนเงิน</p>
+<input type="file" id="slip" accept="image/*">
+<button class="btn" onclick="submitOrder()">ส่งข้อมูล</button>
+<p id="result"></p>
+</div>
+</section>
+
+<footer>
+<div class="logo">PROMPT LAB</div>
+<p>YOUR IDEA. YOUR STORY. YOUR AI DRAMA.</p>
+</footer>
+
+<script>
+function buy(name,price){
+document.getElementById('checkout').style.display='block';
+document.getElementById('selected').innerText='แพ็กเกจ '+name+' ราคา '+price+' บาท';
+document.getElementById('checkout').scrollIntoView({behavior:'smooth'});
+}
+function submitOrder(){
+let name=document.getElementById('customer').value;
+let email=document.getElementById('email').value;
+let slip=document.getElementById('slip').files[0];
+if(!name||!email||!slip){
+alert('กรุณากรอกข้อมูลและแนบสลิป');
+return;
+}
+alert('นี่เป็นระบบตัวอย่าง ยังไม่ได้ส่งคำสั่งซื้อจริง กรุณารอระบบรับออเดอร์');
+}
+</script>
+</body>
+</html>
